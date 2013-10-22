@@ -7,15 +7,15 @@ double f (double x)
 
 int main(){
 	int i;
-double caleczka = 0 ;
+double cal = 0 ;
 double a=-2;
 double b=2;
 double n =100000000;
 double h = (b-a)/n;
 
 for(i=1;i<(n-1);i++){
-	caleczka += (f(a+i*h) + f(a+(i+1.0)*h))/2.0;
+	cal += (f(a+i*h) + f(a+(i+1.0)*h))/2.0;
 }
-	caleczka = caleczka*h;
-	printf("wynik: %f \n", caleczka);
+	cal = cal*h;
+	printf("wynik: %f \n", cal);
 }

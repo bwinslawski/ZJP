@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 	   int i,j,sum=0;
 	   int size;
 	   int n=10000000;
-	double caleczka = 0 ;
+	double cal = 0 ;
 	double a=-2;
 	double b=2;
 	double h = (b-a)/n;
@@ -36,16 +36,16 @@ int main(int argc, char **argv) {
 		size=size-1;
         int poczatek= (rank-1)*n/size;
 		int koniec= (rank)*n/size;	
-		for(i=1;i<(n-1);i++){
-		caleczka += (f(a+i*h) + f(a+(i+1.0)*h))/2.0;
+		for(i=poczatek;i<koniec;i++){
+		cal += (f(a+i*h) + f(a+(i+1.0)*h))/2.0;
 		}
-		caleczka = caleczka*h;
-		MPI_Reduce(&caleczka,    &suma, 1,  MPI_DOUBLE, MPI_SUM, 0,MPI_COMM_WORLD);
+		cal = cal*h;
+		MPI_Reduce(&cal,    &suma, 1,  MPI_DOUBLE, MPI_SUM, 0,MPI_COMM_WORLD);
 		//printf("suma: %f\n",suma);
 		}
 		if (rank == 0) {
-		MPI_Reduce(&caleczka,    &suma, 1,  MPI_DOUBLE, MPI_SUM, 0,MPI_COMM_WORLD);
-		suma=suma/(size-1);
+		MPI_Reduce(&cal,    &suma, 1,  MPI_DOUBLE, MPI_SUM, 0,MPI_COMM_WORLD);
+		
 		  printf("suma: %f\n",suma);
 		}
   
