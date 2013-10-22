@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
    int il= 20;
    int i,j,sum=0;
    int size;
-   int niter=0;
+   long int niter=1000000000;
    double x,y;
    int count=0; /* # of points in the 1st quadrant of unit circle */
    double z;
@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
    MPI_Comm_size(MPI_COMM_WORLD, &size);
 
  
-sscanf(argv[1], "%d", &niter); 
+//sscanf(argv[1], "%d", &niter); 
 
    fflush(stdout);
     if (rank == 0) {

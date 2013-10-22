@@ -6,7 +6,9 @@
 
 main(int argc, char* argv)
 {
-  long int niter= 10000000;
+	long int niter=1000000000;
+	//sscanf(argv[1], "%ld", &niter); 
+  
    double x,y;
    int i,count=0; /* # of points in the 1st quadrant of unit circle */
    double z;
