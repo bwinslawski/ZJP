@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
    int il= 20;
    int i,j,sum=0;
    int size;
-   long int niter=1000000000;
+   long int n=1000000000;
    double x,y;
    int count=0; /* # of points in the 1st quadrant of unit circle */
    double z;
@@ -37,8 +37,8 @@ int main(int argc, char **argv) {
    }
  else {
 		size=size-1;
-       int poczatek= (rank-1)*niter/size;
-		int koniec= (rank)*niter/size;	
+       int poczatek= (rank-1)*n/size;
+		int koniec= (rank)*n/size;	
 		for ( i=poczatek; i<koniec; i++) {
       x = (double)rand()/RAND_MAX;
       y = (double)rand()/RAND_MAX;
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
       if (z<=1) count++;
       }
 	
-   pi=(double)count/niter*4;
+   pi=(double)count/n*4;
 		MPI_Reduce(&pi,    &suma, 1,  MPI_DOUBLE, MPI_SUM, 0,MPI_COMM_WORLD);
 		}
 		if (rank == 0) {

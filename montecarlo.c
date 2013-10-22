@@ -2,30 +2,26 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
-#define SEED 35791246
+#define S 35791246
 
 main(int argc, char* argv)
 {
-	long int niter=1000000000;
-	//sscanf(argv[1], "%ld", &niter); 
+	long int n=1000000000;
+	//sscanf(argv[1], "%ld", &n); 
   
    double x,y;
-   int i,count=0; /* # of points in the 1st quadrant of unit circle */
+   int i,count=0; 
    double z;
    double pi;
 
- //sscanf(argv[1], "%d", &niter); 
-
-
-   /* initialize random numbers */
-   srand(SEED);
+   srand(S);
    count=0;
-   for ( i=0; i<niter; i++) {
+   for ( i=0; i<n; i++) {
       x = (double)rand()/RAND_MAX;
       y = (double)rand()/RAND_MAX;
       z = x*x+y*y;
       if (z<=1) count++;
       }
-   pi=(double)count/niter*4;
-   printf("# of trials= %ld , estimate of pi is %g \n",niter,pi);
+   pi=(double)count/n*4;
+   printf("pi is %g \n",pi);
 }
