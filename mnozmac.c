@@ -12,14 +12,14 @@ int main(int argc, char **argv) {
    
    int A[n][n];
    int B[n];
-   int C[n][n];
+   int C[n];
    int P[n][n]; 
   
    for(i=0;i<n;i++){ 
 		for(j=0;j<n;j++){  
 		
 	    A[i][j]=i;
-		C[i][j]=0;
+		C[i]=0;
 	   }
 	}
 	for(i=0;i<n;i++){  
@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
 
 for (i=0;i<n;i++) {
 for (k=0;k<n;k++) {
-C[i][k] += A[i][k] * B[k];
+C[i] = C[i]+(A[i][k] * B[k]);
 }}
 
 
@@ -47,12 +47,11 @@ C[i][k] += A[i][k] * B[k];
 	}
 
 	printf("\n Macierz wynik:\n");
-	for(i=0;i<n;i++){ 
-	printf("\n");
+
 		for(j=0;j<n;j++){  
-		printf(" %d ",C[i][j]);
+		printf(" %d ",C[j]);
 	   }
-	}
+
 printf("\n");
 
 return 0;

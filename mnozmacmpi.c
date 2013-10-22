@@ -37,6 +37,7 @@ int main(int argc, char **argv){
 	
 	for(j=0;j<n;j++){  	
 	   tabD[j]=j+1;
+	   skladowe[j]=0;
 	   }
 	//printf("Ziarno : %d n : %d\n",ziarno,ile);
 	
@@ -63,12 +64,12 @@ int main(int argc, char **argv){
 					P=0; i--;
 					}
 			}
-			/*for (i = 0; i<n*n; i++){ 
-			//printf("tab[%d]  %d  ",i,tabA[i]);
+			for (i = 0; i<n*n; i++){ 
+			printf(" %d  ",tabA[i]);
 			
 			if(i!=0&&(((i+1)%n)==0)) {printf("\n");
 			}
-			}*/
+			}
 			}
 	
 
@@ -78,26 +79,28 @@ int main(int argc, char **argv){
 	//printf("ZIARNO : %d \n" , ziarno);
 	MPI_Scatter( &tabA , ziarno  , MPI_INT , &tabB, ziarno  , MPI_INT , 0 , MPI_COMM_WORLD);
 
-
+	int w=0;
+	int f = n/size;
 	for (i=0; i<ziarno; i++){
-		if(k>=n) {k=0;}
-		skladowe[i]=tabB[i]*tabD[k];
+		if(k>=n) {k=0; w++; }
+		skladowe[w]=skladowe[w]+(tabB[i]*tabD[k]);
 		//printf("tabB[%d]: %d * tabD:%d = skladowa: %d proces %d\n",i, tabB[i],tabD[i],skladowe[i],rank);	
+		
 		k++;
 		}
 
 
-	MPI_Gather(&skladowe, ziarno , MPI_INT, &tabC, ziarno , MPI_INT, 0, MPI_COMM_WORLD);
+	MPI_Gather(&skladowe,f, MPI_INT, &tabC,f, MPI_INT, 0, MPI_COMM_WORLD);
 		
-	/*if (rank == 0){
+	if (rank == 0){
 		//printf(":::::::::::::::::::\nTu proces %d, drukuje wyniki\n:::::::::::::::::::\n", rank);
-		for (i = 0; i<n*n; i++){ 
+		for (i = 0; i<n; i++){ 
 		
-		//printf("  %d  ",tabC[i]);
+		printf("  %d  ",tabC[i]);
 			
 			if(i!=0&&(((i+1)%n)==0)) {printf("\n");}
 			}
-	}*/
+	}
 
 	MPI_Finalize();
 	return 0;

@@ -1,3 +1,4 @@
+all: runmac runmacm runcal runcalm runmonte runmontem
 runmacm: macm
 	mpirun -np 4 mnozmacmpi 400
 runmac: mac
@@ -22,3 +23,5 @@ monte: montecarlo.c
 	gcc montecarlo.c -o montecarlo
 montem: montecarlompi.c
 	mpicc montecarlompi.c -o montecarlompi
+clear: 
+	ls
