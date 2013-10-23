@@ -1,5 +1,5 @@
 Zawasowane jezyki programowania
-
+https://github.com/bwinslawski/ZJP
 	
 	
 	1.Oliczanie ca³ki. n =100000000
