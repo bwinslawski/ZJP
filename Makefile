@@ -24,4 +24,5 @@ monte: montecarlo.c
 montem: montecarlompi.c
 	mpicc montecarlompi.c -o montecarlompi
 clear: 
+	rm -f *.o mnozmacmpi mnozmac montecarlompi montecarlo calkampi calka
 	ls
