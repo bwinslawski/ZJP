@@ -4,9 +4,9 @@
 #include <string.h>
 #define S 35791246
 
-main(int argc, char* argv)
+main(int argc, char **argv)
 {
-	long int n=1000000000;
+	long int n=atoi(argv[1]);
 	//sscanf(argv[1], "%ld", &n); 
   
    double x,y;

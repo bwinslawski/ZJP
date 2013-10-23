@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 	   int il= 20;
 	   int i,j,sum=0;
 	   int size;
-	   int n=10000000;
+	   int n=atoi(argv[1]);
 	double cal = 0 ;
 	double a=-2;
 	double b=2;
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 		if (rank == 0) {
 		MPI_Reduce(&cal,    &suma, 1,  MPI_DOUBLE, MPI_SUM, 0,MPI_COMM_WORLD);
 		
-		  printf("suma: %f\n",suma);
+		  printf("sumaaaaa: %f\n",suma);
 		}
   
    MPI_Finalize();

@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
    int il= 20;
    int i,j,sum=0;
    int size;
-   long int n=1000000000;
+   long int n=atoi(argv[1]);
    double x,y;
    int count=0; /* # of points in the 1st quadrant of unit circle */
    double z;

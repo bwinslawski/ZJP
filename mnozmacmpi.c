@@ -7,9 +7,9 @@ int main(int argc, char **argv){
 	int rank;
 	int size;
 	int i,j;
-	int n,nn,k;
+	long int n,nn,k;
 	
-	int ziarno=2;
+	long int ziarno=2;
 	int ile;
 	int P=0;
 	int pow=0;
@@ -18,7 +18,7 @@ int main(int argc, char **argv){
 	MPI_Comm_size(MPI_COMM_WORLD, &size); // uruchomiona ilosc procesów
 
 	
-	sscanf(argv[1], "%d", &n); 
+	sscanf(argv[1], "%ld", &n); 
 	
 	
 	ile = n; 
@@ -64,12 +64,13 @@ int main(int argc, char **argv){
 					P=0; i--;
 					}
 			}
+			/*
 			for (i = 0; i<n*n; i++){ 
 			printf(" %d  ",tabA[i]);
 			
 			if(i!=0&&(((i+1)%n)==0)) {printf("\n");
 			}
-			}
+			}*/
 			}
 	
 
@@ -94,12 +95,12 @@ int main(int argc, char **argv){
 		
 	if (rank == 0){
 		//printf(":::::::::::::::::::\nTu proces %d, drukuje wyniki\n:::::::::::::::::::\n", rank);
-		for (i = 0; i<n; i++){ 
+		/*for (i = 0; i<n; i++){ 
 		
-		printf("  %d  ",tabC[i]);
+		//printf("  %d  ",tabC[i]);
 			
 			if(i!=0&&(((i+1)%n)==0)) {printf("\n");}
-			}
+			}*/
 	}
 
 	MPI_Finalize();
